@@ -1,20 +1,23 @@
-import sys
-import os
 import unittest
-
-# Add the 'src' directory to the Python path so 'calculadora' can be imported
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
-
+from biblioteca import Publicacion # type: ignore
 class TestPublicacion(unittest.TestCase):
-    # TODO Adiciona tus pruebas unitarias aquí.
-    # Ejemplo:
-    '''
-    def test_multiplicar_positivos(self):
-        valor_esperado = 15
-        mi_cuenta = CuentaBancaria()
-        valor_actual = mi_cuenta.multiplicar(3, 5)
-        self.assertEqual(valor_esperado, valor_actual)
-    '''
-        
+
+    def test_set_titulo(self):
+        """Prueba el método set_titulo."""
+        publicacion = Publicacion()
+        publicacion.set_titulo("Cien años de soledad")
+        self.assertEqual(publicacion.get_titulo(), "Cien años de soledad", "El título debería ser 'Cien años de soledad'")
+
+    def test_get_ano_publicacion(self):
+        """Prueba el método get_ano_publicacion."""
+        publicacion = Publicacion(titulo="Cien años de soledad", ano_publicacion=1967)
+        self.assertEqual(publicacion.get_ano_publicacion(), 1967, "El año de publicación debería ser 1967")
+
+    def test_to_string(self):
+        """Prueba el método __str__."""
+        publicacion = Publicacion(titulo="Cien años de soledad", ano_publicacion=1967)
+        esperado = "Publicacion{Titulo=Cien años de soledad, AnoPublicacion=1967}"
+        self.assertEqual(str(publicacion), esperado, "El método __str__() no devuelve el valor esperado")
+
 if __name__ == '__main__':
     unittest.main()
