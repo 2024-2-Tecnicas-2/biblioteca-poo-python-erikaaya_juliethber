@@ -1,3 +1,4 @@
+# revista.py
 from publicacion import Publicacion
 
 class Revista(Publicacion):

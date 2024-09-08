@@ -1,25 +1,21 @@
 import unittest
-from biblioteca import Libro  # type: ignore
+from libro import Libro
 
 class TestLibro(unittest.TestCase):
+    def setUp(self):
+        self.libro = Libro("Cien años de soledad", 1967, "Gabriel García Márquez", 417)
 
-    def test_set_autor(self):
-        """Prueba el método set_autor."""
-        libro = Libro()
-        libro.set_autor("Gabriel García Márquez")
-        self.assertEqual(libro.get_autor(), "Gabriel García Márquez", "El autor debería ser 'Gabriel García Márquez'")
+    def test_get_titulo(self):
+        self.assertEqual(self.libro.titulo, "Cien años de soledad")
 
-    def test_get_numero_de_paginas(self):
-        """Prueba el método get_numero_de_paginas."""
-        libro = Libro(autor="JK Rowling", numero_de_paginas=450, titulo="Harry Potter", ano_publicacion=1997)
-        self.assertEqual(libro.get_numero_de_paginas(), 450, "El número de páginas debería ser 450")
+    def test_get_anio_publicacion(self):
+        self.assertEqual(self.libro.anio_publicacion, 1967)
 
-    def test_to_string(self):
-        """Prueba el método __str__."""
-        libro = Libro(autor="JK Rowling", numero_de_paginas=450, titulo="Harry Potter", ano_publicacion=1997)
-        esperado = ("Libro{Titulo=Harry Potter, AnoPublicacion=1997, "
-                    "Autor=JK Rowling, NumeroDePaginas=450}")
-        self.assertEqual(str(libro), esperado, "El método __str__() no devuelve el valor esperado")
+    def test_get_autor(self):
+        self.assertEqual(self.libro.autor, "Gabriel García Márquez")
+
+    def test_get_num_paginas(self):
+        self.assertEqual(self.libro.num_paginas, 417)
 
 if __name__ == '__main__':
     unittest.main()

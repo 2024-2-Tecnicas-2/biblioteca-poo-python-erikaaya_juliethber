@@ -1,3 +1,4 @@
+# publicacion.py
 class Publicacion:
     def __init__(self, titulo, anio_publicacion):
         self.titulo = titulo

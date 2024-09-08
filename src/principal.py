@@ -1,3 +1,4 @@
+# principal.py
 from libro import Libro
 from revista import Revista
 
